@@ -12,12 +12,12 @@ namespace StriveEasierAlgorithms
             while (true) // Show this menu until the user actually wants to exit
             {
                 Console.WriteLine(@"
-Please select you algorithm:
-1. Greatest Common Divisor
-2. Bubble Sort
-3. Binary Search Algorithm
-4. Exit
-");
+                    Please select you algorithm:
+                    1. Greatest Common Divisor
+                    2. Bubble Sort
+                    3. Binary Search Algorithm
+                    4. Exit
+                    ");
                 switch (ReadAnIntegerInputFromTheUser())
                 {
                     case 1: RunGcd(); break;
@@ -93,13 +93,16 @@ Please select you algorithm:
 
             // Fill-up the collection with the numbers provided by the user
             Console.WriteLine("Please insert the number you want to search:");
+
             var watch = new System.Diagnostics.Stopwatch();
             watch.Start();
+
             while (true)
             {
                 int nextNumber = ReadAnIntegerInputFromTheUser();
                 if (nextNumber < 0)
                     break;
+
                 try
                 {
                     int indexOfNumber = outOfOrderCollection.IndexOf(nextNumber);
@@ -113,6 +116,7 @@ Please select you algorithm:
                     Console.WriteLine("The number you entered not found in the list . \n Please search again with correct number.");
                      
                 }
+
                 watch.Stop(); 
                 Console.Write($"\nExecution Time: {watch.ElapsedMilliseconds} ms");
             }

@@ -27,7 +27,7 @@ namespace StriveEasierAlgorithms
                     default: Console.WriteLine("Please select one of the options below."); break;
                 }
             }
-            
+
         }
 
         /// <summary>
@@ -87,41 +87,56 @@ namespace StriveEasierAlgorithms
             Console.WriteLine(string.Join("|", outOfOrderCollection));
         }
 
+        /// <summary>
+        /// Handles the user interface for providing inputs to the RunBinarySearchAlgorithm
+        /// and run the alghoritm it self with a call to the class BinaryAlgorithm
+        /// </summary>
         private static void RunBinarySearchAlgorithm()
         {
+            // List array of in from the class BinaryAlgorithm
             List<int> outOfOrderCollection = BinaryAlgorithm.GetBinaryList();
 
             // Fill-up the collection with the numbers provided by the user
             Console.WriteLine("Please insert the number you want to search:");
 
+            // Watching the iterations 
             var watch = new System.Diagnostics.Stopwatch();
             watch.Start();
 
+            // Loop the list
             while (true)
             {
+                // Int number from user input 
                 int nextNumber = ReadAnIntegerInputFromTheUser();
+
+                // If negative break
                 if (nextNumber < 0)
                     break;
 
+                // Try if we have the number on tthe list or not
                 try
                 {
+                    // Index of the array items
                     int indexOfNumber = outOfOrderCollection.IndexOf(nextNumber);
-                    if(indexOfNumber<0)
+                    // Nott found index of the searched number
+                    if (indexOfNumber < 0)
                     { Console.WriteLine("The number you entered not found in the list .\nPlease search again with correct number."); }
                     else
-                    Console.WriteLine("The index of the value " + nextNumber + " is :" + indexOfNumber);
+                        // Result of the search
+                        Console.WriteLine("The index of the value " + nextNumber + " is :" + indexOfNumber);
                 }
                 catch (Exception)
                 {
                     Console.WriteLine("The number you entered not found in the list . \n Please search again with correct number.");
-                     
+
                 }
 
-                watch.Stop(); 
+                // Stop and show the iterations in ms
+                watch.Stop();
                 Console.Write($"\nExecution Time: {watch.ElapsedMilliseconds} ms");
             }
 
-        
+
         }
 
         /// <summary>
